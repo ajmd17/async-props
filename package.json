@@ -14,8 +14,7 @@
     "build-min": "NODE_ENV=production webpack -p modules/AsyncProps.js umd/AsyncProps.min.js",
     "lint": "eslint modules",
     "start": "babel-node example/server.js",
-    "test": "npm run lint && karma start",
-    "postinstall": "node ./npm-scripts/postinstall.js"
+    "test": "npm run lint && karma start"
   },
   "authors": [
     "Ryan Florence"
