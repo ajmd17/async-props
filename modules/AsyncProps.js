@@ -1,9 +1,11 @@
 /*global __ASYNC_PROPS__*/
 import React from 'react'
+import createClass from 'create-react-class'
+import PropTypes from 'prop-types'
 import RouterContext from 'react-router/lib/RouterContext'
 import computeChangedRoutes from 'react-router/lib/computeChangedRoutes'
 
-const { array, func, object } = React.PropTypes
+const { array, func, object } = PropTypes
 
 function eachComponents(components, iterator) {
   for (var i = 0, l = components.length; i < l; i++) {
@@ -121,7 +123,7 @@ function hydrate(props) {
 }
 
 
-const AsyncPropsContainer = React.createClass({
+const AsyncPropsContainer = createClass({
 
   propTypes: {
     Component: func.isRequired,
@@ -150,7 +152,7 @@ const AsyncPropsContainer = React.createClass({
 
 })
 
-const AsyncProps = React.createClass({
+const AsyncProps = createClass({
 
   childContextTypes: {
     asyncProps: object

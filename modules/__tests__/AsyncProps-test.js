@@ -1,4 +1,5 @@
 import React from 'react'
+import createClass from 'create-react-class'
 import expect, { spyOn, restoreSpies } from 'expect'
 import createHistory from 'react-router/lib/createMemoryHistory'
 import { render } from 'react-dom'
@@ -14,7 +15,7 @@ const createRunner = (routes, extraProps) => {
       if (steps.length)
         steps.shift()({ html: div.innerHTML, push })
     }
-    const Container = React.createClass({
+    const Container = createClass({
       componentDidMount: next,
       componentDidUpdate: next,
       render() { return this.props.children }
@@ -78,9 +79,11 @@ describe('rendering', () => {
       })
     })
   })
+
   it('renders correctly when no components have loadProps', () => {
     const TEXT = 'no async props'
     const Component = () => <div>{TEXT}</div>
+
     createRunner(<Route component={Component} path="/"/>)({
       startPath: '/',
       steps: [
@@ -102,7 +105,7 @@ describe('server rendering', () => {
   beforeEach(() => window.__ASYNC_PROPS__ = [ DATA ])
   afterEach(() => {
     restoreSpies()
-    delete window.__ASYNC_PROPS__ 
+    delete window.__ASYNC_PROPS__
   })
 
 
